@@ -77,4 +77,18 @@ connection.query(userDelSql, function(err, result) {
 	console.log('返回：' + result.length);
 	console.log('=======================================');
 });
+
+//调用存储过程
+var userProc = 'Call p_UserInfo(?,?,?,@ExtReturnVal);';
+var userProcParams = [0, 'ProcHuYangCheng', 'ProcAbcabc123123'];
+connection.query(userProc, userProcParams, function(err, result) {
+	if (err) {
+		console.log('调用存储过程出错：' + err);
+		return;
+	}
+	console.log('=================PROC==================');
+	console.log(result);
+	console.log(result[0][0].ExtReturnVal);
+	console.log('=======================================');
+})
 connection.end();
