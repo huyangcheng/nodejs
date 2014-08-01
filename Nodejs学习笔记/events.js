@@ -2,13 +2,12 @@
 	调取events模块，获取events.EventEmitter对象并将其实例化
  */
 
-var EventEmitter = require("events").EventEmitter;
-var ee = new EventEmitter();
-/*
-	on方法：为事件注册一个监听
-	参数1：event 字符串 事件名
-	参数2：回调函数
-	emitter.on(event, listener);
+var EventEmitter = require("events").EventEmitter; 
+var ee = newEventEmitter(); 
+/*     
+	on方法：为事件注册一个监听     
+	参数1：event 字符串 事件名     参数2：回调函数
+	emitter.on(event, listener); 
 */
 
 ee.on("some_events", function(foo, bar) {
