@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">       
+	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signin.css" />
+</head>
+<body>
+	<div id="container" class="container">
+		<% if (locals.success) { %>
+			<div id="alt_sucess" class="alert alert-success">
+				<%- success %>
+			</div>
+		<% } %>
+		<% if (locals.err) { %>
+			<div id="alt_warning" class="alert alert-warning">
+				<%= err %>
+			</div>
+		<% } %>
+		<form class="form-signin" role="form" method="post">
+			<h2 class="form-signin-heading">注册</h2>
+			<input type="text" id="txtUserName" name="txtUserName" placeholder="用户名" required autofocus class="form-control" />
+			<input type="password" id="txtUserPass" class="form-control" placeholder="密码" name="txtUserPass" required />
+			<input type="password" class="form-control" id="txtUserRePass" name="txtUserRePass" placeholder="确认密码" required />
+			<button id="btnSub" class="btn btn-lg btn-primary" type="submit">提　交</button>
+			<a href="/login" class="btn btn-likn" role="button">登　录</a>
+		</form>
+	</div>
+	<script src="/javascripts/jquery-1.11.1.min.js" type="text/javascript"></script>
+	<script>
+		String.prototype.format = function(args) {
+			var result = this;
+			if(arguments.length > 0) {
+				if(arguments.length == 1 && typeof (args) == "object") {
+					for(var key in args) {
+						var reg = new RegExp("({" + key + "})", "g");
+						result = result.replace(reg, args[key]);
+					}
+				}else {
+					for (var i = 0; i < arguments.length; i++) {
+	                    if (arguments[i] != undefined) {
+	                        var reg = new RegExp("({)" + i + "(})", "g");
+	                        result = result.replace(reg, arguments[i]);
+	                    }
+	            	}
+				}
+			}
+			return result;
+		}
+		$(function() {
+			$('#btnSub').on('click', function() {
+				var
+					$container = $('#container'),
+					$txtUserName = $('#txtUserName'),
+					$txtUserNameVal = $.trim($txtUserName.val()),
+					$txtUserPass = $('#txtUserPass'),
+					$txtUserPassVal = $.trim($txtUserPass.val()),
+					$txtUserRePass = $('#txtUserRePass'),
+					$txtUserRePassVal = $.trim($txtUserRePass.val()),
+					errorTip = '<div id="errorTip" class="alert alert-warning" >{0}</div>';
+				$('#errorTip').remove();
+				if ($txtUserNameVal.length == 0) {
+					$container.prepend(errorTip.format('用户名不能为空'));
+					$txtUserName.focus();
+					return false;
+				}
+
+				if($txtUserPassVal.length == 0) {
+					$container.prepend(errorTip.format('密码不能为空'));
+					$txtUserPass.focus();
+					return false;
+				}
+
+				if($txtUserRePassVal.length == 0) {
+					$container.prepend(errorTip.format('确认密码不能为空'));
+					$txtUserRePass.focus();
+					return false;
+				}
+
+				if($txtUserPassVal != $txtUserRePassVal) {
+					$container.prepend(errorTip.format('两次密码不一致'));
+					$txtUserPass.focus();
+					return false;
+				}
+				return true;
+			});
+		})
+	</script>
+</body>
+</html>

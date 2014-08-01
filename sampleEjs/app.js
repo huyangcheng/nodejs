@@ -4,11 +4,25 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//加载session
+var session = require('express-session');
 
+//=================加载区域开始===================
+//加载routes 模块区域，与下方use中匹配对应
 var routes = require('./routes/index');
-var users = require('./routes/users');
-
+var reg = require('./routes/reg');
+var subform = require('./routes/subform');
+// var login = require('./routes/login');
+// var logout = require('./routes/logout');
+//=================加载区域结束===================
 var app = express();
+
+//设置监听端口
+app.listen(6339);
+
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,11 +32,22 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser()); //设置cookies
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cookieParser("huyangcheng"));
+//设置session
+app.use(session({
+    secret: 'huyangcheng'
+}));
+
+//=================路由区域开始===================
 app.use('/', routes);
-app.use('/users', users);
+app.use('/reg', reg);
+app.use('/subform', subform);
+// app.use('/login', login);
+// app.use('/logout', logout);
+//=================路由区域结束===================
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
