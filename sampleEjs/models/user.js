@@ -26,7 +26,7 @@ pool.getConnection(function(err, connection) {
 			console.log('USER Error：' + err.message);
 			return;
 		}
-		console.log('User Succeed');
+		// console.log('User Succeed');
 	});
 
 	//添加数据
@@ -68,7 +68,7 @@ pool.getConnection(function(err, connection) {
 		var getUserByUserNameSql = 'Select * From UserInfo Where UserName = ?';
 		connection.query(getUserByUserNameSql, [username], function(err, result) {
 			if(err) {
-				console.log('根据用户名获取用户信息出错：' + err.message);
+				console.log('根据用户名获取用户信息出错：' + err);
 				return;
 			}
 			// connection.release();

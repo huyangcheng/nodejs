@@ -11,16 +11,13 @@ var session = require('express-session');
 //加载routes 模块区域，与下方use中匹配对应
 var routes = require('./routes/index');
 var reg = require('./routes/reg');
-var subform = require('./routes/subform');
-// var login = require('./routes/login');
+var login = require('./routes/login');
 // var logout = require('./routes/logout');
 //=================加载区域结束===================
 var app = express();
 
 //设置监听端口
 app.listen(6339);
-
-
 
 
 
@@ -44,8 +41,7 @@ app.use(session({
 //=================路由区域开始===================
 app.use('/', routes);
 app.use('/reg', reg);
-app.use('/subform', subform);
-// app.use('/login', login);
+app.use('/login', login);
 // app.use('/logout', logout);
 //=================路由区域结束===================
 

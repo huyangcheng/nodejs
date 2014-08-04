@@ -62,7 +62,7 @@
 					$txtUserRePass = $('#txtUserRePass'),
 					$txtUserRePassVal = $.trim($txtUserRePass.val()),
 					errorTip = '<div id="errorTip" class="alert alert-warning" >{0}</div>';
-				$('#errorTip').remove();
+				$('#errorTip,#alt_sucess,#alt_warning').remove();
 				if ($txtUserNameVal.length == 0) {
 					$container.prepend(errorTip.format('用户名不能为空'));
 					$txtUserName.focus();

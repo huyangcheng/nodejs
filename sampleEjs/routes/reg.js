@@ -28,15 +28,14 @@ router.post('/', function(req, res) {
 
 			res.locals.err = err;
 			res.render('reg', {
-				title: TITLE + 'error'
+				title: TITLE
 			})
 			return;
 		}
 		//保存用户
-		newUser.save(function(err, resule) {
+		newUser.save(function(err, result) {
 			if (err) {
 				res.locals.err = err;
-				res.locals.success = 'err';
 				res.render('reg', {
 					title: TITLE
 				})
@@ -52,9 +51,6 @@ router.post('/', function(req, res) {
 		});
 	});
 
-	res.render('reg', {
-		title: TITLE
-	})
 });
 
 module.exports = router;
