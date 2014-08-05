@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signin.css" />
+</head>
+<body>
+	<div class="container" id="container">
+		<% if (locals.success) { %>
+			<div id="alt_success" class="alert alert-success">
+				<%- success %>
+			</div>
+		<% } %>
+		<% if (locals.error) { %>
+			<div id="alt_warning" class="alert alert-warning">
+				<%= error %>
+			</div>
+		<% } %>
+		<form class="form-signin" role="form" method="post">
+			<h2 class="form-signin-handing"><%= title %></h2>			
+			<input type="text" id="txtUserName" class="form-control" name="txtUserName" placeholder="用户名" autofocus />
+			<input type="password" class="txtUsePass form-control" id="txtUserPass" name="txtUserPass" placeholder="密码"  />
+			<label class="checkbox">
+				<input type="checkbox" id="chbRem" name="chbRem" value="rememtber" />记住密码
+			</label>
+			<button id="btnSub" class="btn btn-lg btn-primary" type="submit">登　录</button>
+			<a href="/reg" class="btn btn-link" role="button">注　册</a>
+		</form>
+	</div>
+	<script src="/javascripts/jquery-1.11.1.min.js" type="text/javascript"></script>
+	<script>	
+		String.prototype.format = function(args) {
+			var result = this;
+			if(arguments.length > 0) {
+				if(arguments.length == 1 && typeof (args) == "object") {
+					for(var key in args) {
+						var reg = new RegExp("({" + key + "})", "g");
+						result = result.replace(reg, args[key]);
+					}
+				}else {
+					for (var i = 0; i < arguments.length; i++) {
+	                    if (arguments[i] != undefined) {
+	                        var reg = new RegExp("({)" + i + "(})", "g");
+	                        result = result.replace(reg, arguments[i]);
+	                    }
+	            	}
+				}
+			}
+			return result;
+		}
+
+		$(function() {
+			$('#btnSub').on('click', function() {
+
+				var $txtUserName = $('#txtUserName'),
+					$txtUserNameVal = $.trim($txtUserName.val()),
+					$txtUserPass = $('#txtUserPass'),
+					$txtUserPassVal = $.trim($txtUserPass.val()),
+					 errorTip = '<div id="errorTip" class="alert alert-warning">{0}</div> ';
+				$('#errorTip').remove();
+				if($txtUserNameVal.length == 0) {
+					$('#container').prepend(errorTip.format('用户名不能为空'));
+					$txtUserName.focus();
+					return false;
+				}
+
+				if($txtUserPassVal.length == 0) {
+					$('#container').prepend(errorTip.format('密码不能为空'));
+					$txtUserPass.focus();
+					return false;
+				}
+				return true;
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div class="navbar navbar-default navbar-statis-top " role="navigation">
+	<div class="container">
+		<div class="container-header">
+			<a href="/" class="navbar-brand">Nodejs + Express + Ejs + MySql + Bootstarp 示例</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<% if (locals.userName) { %>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/"><%= userName %></a></li>
+				<li><a href="/logout">安全退出</a></li>
+			</ul>
+			<% } else { %>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/login">登录</a></li>
+				<li><a href="/reg">注册</a></li>
+				<li><a href="/upload">上传</a></li>
+			</ul>
+			<% } %>
+		</div>
+	</div>
+</div>
