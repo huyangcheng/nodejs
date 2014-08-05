@@ -12,7 +12,8 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var reg = require('./routes/reg');
 var login = require('./routes/login');
-// var logout = require('./routes/logout');
+var logout = require('./routes/logout');
+var upload = require('./routes/upload');
 //=================加载区域结束===================
 var app = express();
 
@@ -42,7 +43,8 @@ app.use(session({
 app.use('/', routes);
 app.use('/reg', reg);
 app.use('/login', login);
-// app.use('/logout', logout);
+app.use('/logout', logout);
+app.use('/upload', upload);
 //=================路由区域结束===================
 
 /// catch 404 and forward to error handler

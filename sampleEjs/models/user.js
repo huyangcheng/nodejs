@@ -38,7 +38,7 @@ pool.getConnection(function(err, connection) {
 
 		var insertUserSql = 'Insert Into UserInfo (Id, UserName, UserPass) Values (0, ?, ?);';
 		connection.query(insertUserSql, [user.username, user.userpass], function(err, result) {
-			if(err) {
+			if (err) {
 				console.log('添加数据错误：' + err);
 				return;
 			}
@@ -52,7 +52,7 @@ pool.getConnection(function(err, connection) {
 	User.getUserNumByName = function getUserNumByName(username, callback) {
 		var getUserNumByNameSql = 'Select Count(1) As Num From UserInfo Where username = ?';
 		connection.query(getUserNumByNameSql, [username], function(err, result) {
-			if(err) {
+			if (err) {
 				console.log('根据用户名获取用户数量出错：' + err.message);
 				return;
 			}
@@ -67,7 +67,7 @@ pool.getConnection(function(err, connection) {
 	User.getUserByUserName = function getUserByUserName(username, callback) {
 		var getUserByUserNameSql = 'Select * From UserInfo Where UserName = ?';
 		connection.query(getUserByUserNameSql, [username], function(err, result) {
-			if(err) {
+			if (err) {
 				console.log('根据用户名获取用户信息出错：' + err);
 				return;
 			}

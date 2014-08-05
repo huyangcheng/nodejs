@@ -13,6 +13,7 @@
 		1.query：接收GET提交参数
 		2.body：接收POST提交参数
 		3.params：两种都能接收
+	2.4 redirect方法，服务器内部跳转
 3. exports对象
 	3.1 为对象赋值属性，可在其他js文件中调用刚该属性
 
@@ -40,6 +41,8 @@ Nodejs尝试加载的优先级 js文件 > json文件 > node文件
 		request.cookies[name];
 	3.清除
 		request.clearCookie(name);
+	4.options
+		1.maxAge：设置过期时间，毫秒为单位
 9.MySql 模块
 	https://github.com/felixge/node-mysql
 	https://www.npmjs.org/package/mysql
@@ -70,5 +73,15 @@ Nodejs尝试加载的优先级 js文件 > json文件 > node文件
 	10.释放： connection.release();
 	11.断线重连： connection.connect 方法中判断err参数，并监听on事件。
 	12.escape ：防止SQL注入，将用户输入参数值传入即可。
-	
 
+10.formidable 模块
+	https://github.com/felixge/node-formidable
+	https://www.npmjs.org/package/formidable
+	1.创建上传表单对象：formidable.IncomingForm();
+	2.对象属性：
+		1.encoding：设置字符编码[utf-8]
+		2.uploadDir：设置上传文件的默认目录
+		3.keepExtensions： 是否保留文件后缀
+		4.maxFieldsSize： 设置文件最大值
+		5.更多..
+	

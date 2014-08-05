@@ -15,6 +15,7 @@ router.post('/', function(req, res) {
 		userPass = req.body['txtUserPass'],
 		userRePass = req.body['txtUserRePass'],
 		md5 = crypto.createHash('md5');
+	userPass = md5.update(userPass).digest('hex');
 	var newUser = new User({
 			username: userName,
 			userpass: userPass
