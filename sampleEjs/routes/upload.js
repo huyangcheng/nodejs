@@ -61,6 +61,7 @@ router.post('/', function(req, res) {
 		//目录不存在将报错，后续优化
 		fs.renameSync(files.file.path, newPath); //重命名
 	});
+	
 
 	res.locals.success = '上传成功';
 	res.render('upload', {
