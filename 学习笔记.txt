@@ -97,4 +97,5 @@ Nodejs尝试加载的优先级 js文件 > json文件 > node文件
 	1.process：
 附：
 	模块
+		supervisor：使用supervisor 命令执行HTTP 服务器会在改变任何nodejs代码的时候自动重启
 		node-inspector：适用于在浏览器中调试node.js文件
