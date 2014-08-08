@@ -32,7 +32,12 @@
 Nodejs尝试加载的优先级 js文件 > json文件 > node文件
 
 5.ejs模版引擎
-	include命令：将指定文件中的内容包括进来
+	1.include命令：将指定文件中的内容包括进来
+	2.express-partials 模块，ejs 不支持layout 模块后需要使用外部模块来实现
+		1.实现：
+			var partials = require('express-partials');
+			app.use(partials());
+		2.链接：https://github.com/publicclass/express-partials
 
 6.crypto加密模块
 	//根据指定算法生成hash值
