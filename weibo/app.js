@@ -15,6 +15,9 @@ var settings = require('./settings');
 
 var app = express();
 
+var flash = require('connect-flash');
+app.use(flash());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -36,6 +39,15 @@ app.use(session({
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next){
+  res.locals.user = req.session.user;
+  var error = req.flash('error');
+  var success = req.flash('success');
+   res.locals.error = error.length ? error : null;
+  res.locals.success = success.length ? success : null;
+  next();
+});
 
 app.use('/', routes);
 app.use('/users', users);

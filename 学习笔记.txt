@@ -100,6 +100,8 @@ Nodejs尝试加载的优先级 js文件 > json文件 > node文件
 		5.更多..
 11.全局变量
 	1.process：
+12.mongodb 模块
+	
 附：
 	模块
 		supervisor：使用supervisor 命令执行HTTP 服务器会在改变任何nodejs代码的时候自动重启
