@@ -1,0 +1,663 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"request",
+				"http.request(options, cb);"
+			],
+			[
+				"proces",
+				"process.openStdin();"
+			],
+			[
+				"pr",
+				"process.assert();"
+			],
+			[
+				"fs",
+				"fs.fchmod(fd, mode, callback);"
+			],
+			[
+				"txtUserN",
+				"txtUserName"
+			],
+			[
+				"txtuserp",
+				"txtUserRePassVal"
+			],
+			[
+				"txtuserpas",
+				"txtUserPassVal"
+			],
+			[
+				"txtuser",
+				"txtUserPass"
+			],
+			[
+				"getUser",
+				"getUserByUserNameSql"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"userUpda",
+				"userUpdateSqlParams"
+			],
+			[
+				"userAddSql",
+				"userAddSqlParams"
+			],
+			[
+				"cry",
+				"crypto.createHash(hash);"
+			],
+			[
+				"OU",
+				"outputVal"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "1. http对象\n	1.1 创建http\n	var http = require(\"http\");\n	1.2 创建Server\n	用户请求服务时会将信息（request,response）传递到回调函数中\n	http.createServer(function(request, response){})\n		1.2.1 listen方法，设置服务器监听的端口号\n	1.3 创建request,作为客户端向HTTP 服务器发起请求\n		1.options参数：\n			1.host：请求网站的域名或 IP 地址。\n			2.port：请求网站的端口，默认 80。\n			3.method：请求方法，默认是 GET。\n			4.path：请求的相对于根的路径，默认是“/”。QueryString 应该包含在其中。\n			5.headers ：一个关联数组对象，为请求头的内容。\n		2.callback回调函数：传递一个为 http.ClientResponse 的实例。\n\n2. response对象\n	2.1 writeHead方法，设置返回的状态码以及头信息。 //response.writeHead(200, {\"Content-Type\":\"text/plain\"});\n	2.2 write方法,想客户端返回文本。\n	2.3 end方法，返回结束\n	2.3 参数获取\n		1.query：接收GET提交参数\n		2.body：接收POST提交参数\n		3.params：两种都能接收\n	2.4 redirect方法，服务器内部跳转\n3. exports对象\n	3.1 为对象赋值属性，可在其他js文件中调用刚该属性\n\n4.模块\n文件模块访问方式通过require('/文件名.后缀')    require('./文件名.后缀')    requrie('../文件名.后缀') \n去访问，文件后缀可以省略；以\"/\"开头是以绝对路径去加载，以\"./\"开头和以\"../\"开头表示以相对路径加载，而以\"./\"开头表示同级目录下文件，\nNodejs尝试加载的优先级 js文件 > json文件 > node文件\n\n5.ejs模版引擎\n	1.include命令：将指定文件中的内容包括进来\n	2.express-partials 模块，ejs 不支持layout 模块后需要使用外部模块来实现\n		1.实现：\n			var partials = require('express-partials');\n			app.use(partials());\n		2.链接：https://github.com/publicclass/express-partials\n\n6.crypto加密模块\n	//根据指定算法生成hash值\n	var md5 = crypto.createHash('MD5');\n	//加密\n	var en_pwd = md5.update('源文件').digest('hex');\n7.session模块\n	1.注册：session\n	2.清除：\n		req.session.destroy();\n8.cookies\n	1.设置\n		request.cookie(name, value, {options: value});\n	2.获取\n		request.cookies[name];\n	3.清除\n		request.clearCookie(name);\n	4.options\n		1.maxAge：设置过期时间，毫秒为单位\n9.MySql 模块\n	https://github.com/felixge/node-mysql\n	https://www.npmjs.org/package/mysql\n	1.创建连接: mysql.createConnection(options);\n	2.Connection Options：\n		host：主机地址 （默认：localhost）\n		user：用户名\n		password：密码\n		port：端口号 （默认：3306）\n		database：数据库名\n		charset：连接字符集（默认：'UTF8_GENERAL_CI'，注意字符集的字母都要大写）\n		localAddress：此IP用于TCP连接（可选）\n		socketPath：连接到unix域路径，当使用 host 和 port 时会被忽略\n		timezone：时区（默认：'local'）\n		connectTimeout：连接超时（默认：不限制；单位：毫秒）\n		multipleStatements：是否许一个query中有多个MySQL语句 （默认：false）\n		...\n	3.打开连接： connection.connect(func); //操作完成后执行回调函数，并传回错误信息对。\n	4.执行SQL ： connection.query(sql, params, func);\n	5.结束连接： connection.end(),connection.destory(); //end在queries都结束后执行，接收一个回调函数；destory立即执行。\n	6.创建连接池： mysql.createPool(options);\n	7.Pool options： 在connection的前提下扩充\n		waitForConnections：当连接池没有连接或超出最大限制时，设置为true且会把连接放入队列，设置为false会返回error\n		connectionLimit：连接数限制，默认：10\n		queueLimit：最大连接请求队列限制，设置为0表示不限制，默认：0\n	8.连接事件： pool.on('connection', func(connection));\n	9.共享连接池使用： pool.getConnection(func(err, connection));\n	10.释放： connection.release();\n	11.断线重连： connection.connect 方法中判断err参数，并监听on事件。\n	12.escape ：防止SQL注入，将用户输入参数值传入即可。\n\n10.formidable 模块\n	https://github.com/felixge/node-formidable\n	https://www.npmjs.org/package/formidable\n	1.创建上传表单对象：formidable.IncomingForm();\n	2.对象属性：\n		1.encoding：设置字符编码[utf-8]\n		2.uploadDir：设置上传文件的默认目录\n		3.keepExtensions： 是否保留文件后缀\n		4.maxFieldsSize： 设置文件最大值\n		5.更多..\n11.全局变量\n	1.process：\n12.mongodb 模块\n	1.打开\n附：\n	模块\n		supervisor：使用supervisor 命令执行HTTP 服务器会在改变任何nodejs代码的时候自动重启\n		node-inspector：适用于在浏览器中调试node.js文件\n",
+			"file": "/E/学习/nodejs/学习笔记.txt",
+			"file_size": 4848,
+			"file_write_time": 130521980177035493,
+			"settings":
+			{
+				"buffer_size": 3012,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 2093,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/index.js",
+			"settings":
+			{
+				"buffer_size": 3268,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/user.ejs",
+			"settings":
+			{
+				"buffer_size": 65,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/say.ejs",
+			"settings":
+			{
+				"buffer_size": 254,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "models/post.js",
+			"settings":
+			{
+				"buffer_size": 1448,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Nodejs/Nodejs.sublime-build",
+	"command_palette":
+	{
+		"height": 219.0,
+		"selected_items":
+		[
+			[
+				"rename",
+				"Emmet: Rename Tag"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"install pacage",
+				"Package Control: Install Package"
+			],
+			[
+				"remove package",
+				"Package Control: Remove Package"
+			],
+			[
+				"reindent Lines",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"remoe package",
+				"Package Control: Remove Package"
+			],
+			[
+				"install Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 249.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/学习/nodejs/weibo/models/user.js",
+		"/E/学习/nodejs/weibo/views/login.ejs",
+		"/E/学习/nodejs/weibo/views/posts.ejs",
+		"/E/学习/nodejs/weibo/views/layout.ejs",
+		"/E/学习/nodejs/weibo/views/index.ejs",
+		"/C/Users/Administrator/Desktop/microblog/models/post.js",
+		"/C/Users/Administrator/Desktop/microblog/views/layout.ejs",
+		"/E/学习/nodejs/weibo/models/post.js",
+		"/C/Users/Administrator/Desktop/microblog/views/user.ejs",
+		"/C/Users/Administrator/Desktop/microblog/routes/index.js",
+		"/E/学习/nodejs/weibo/views/reg.ejs",
+		"/C/Users/Administrator/Desktop/microblog/models/db.js",
+		"/C/Users/Administrator/Desktop/microblog/models/user.js",
+		"/E/学习/nodejs/weibo/package.json",
+		"/C/Users/Administrator/Desktop/microblog/node_modules/connect-flash/package.json",
+		"/C/Users/Administrator/Desktop/microblog/app.js",
+		"/C/Users/Administrator/Desktop/microblog/package.json",
+		"/E/学习/nodejs/weibo/models/db.js",
+		"/E/学习/nodejs/weibo/app.js",
+		"/E/学习/nodejs/weibo/routes/index.js",
+		"/E/学习/nodejs/weibo/views/foot.ejs",
+		"/C/Users/Administrator/Desktop/microblog/routes/users.js",
+		"/C/Users/Administrator/Desktop/microblog/views/index.ejs",
+		"/E/学习/nodejs/学习笔记.txt",
+		"/E/学习/nodejs/weibo/views/nav.ejs",
+		"/E/学习/nodejs/weibo/views/head.ejs",
+		"/C/Users/Administrator/Desktop/microblog/views/login.ejs",
+		"/C/Users/Administrator/Desktop/microblog/views/reg.ejs",
+		"/E/学习/nodejs/weibo/settings.js",
+		"/E/学习/nodejs/sampleEjs/app.js",
+		"/E/学习/nodejs/sampleEjs/package.json",
+		"/E/学习/nodejs/weibo/node_modules/express/package.json",
+		"/E/学习/nodejs/weibo/node_modules/connect-mongo/package.json",
+		"/E/个人/bae/ microblog/server.js",
+		"/E/个人/bae/ microblog/app.conf",
+		"/C/Users/Administrator/AppData/Roaming/npm/node-debug.cmd",
+		"/C/Users/Administrator/.npmrc",
+		"/C/Users/Administrator/WebstormProjects/untitled/test.js",
+		"/C/Users/Administrator/AppData/Roaming/npm/express",
+		"/D/Program Files/nodejs/node_perfctr_provider.man",
+		"/D/Program Files/nodejs/node_etw_provider.man",
+		"/D/Program Files/nodejs/npm.cmd",
+		"/D/Program Files/nodejs/npm",
+		"/C/Users/Administrator/node",
+		"/E/学习/nodejs/Node.js开发指南_中文正版高清.pdf",
+		"/C/Users/Administrator/.kdiff3rc",
+		"/D/Program Files/nodejs/node_modules/npm/node_modules/npmconf/npmconf.js",
+		"/E/学习/mongoDB/学习笔记.txt",
+		"/C/Program Files/MongoDB 2.6 Standard/etc/mongodb.conf",
+		"/E/学习/nodejs/sampleEjs/views/index.ejs",
+		"/E/学习/nodejs/weibo/public/img/glyphicons-halflings-white.png",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Side Bar.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/E/学习/nodejs/sampleEjs/routes/subform.js",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/E/学习/nodejs/新建文本文档.txt",
+		"/E/学习/nodejs/index.js",
+		"/E/学习/nodejs/httpRequestToTopic.js",
+		"/E/学习/nodejs/README.md",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Pristine Packages/Theme - Default.sublime-package",
+		"/E/学习/nodejs/weibo/package.sublime-workspace",
+		"/E/学习/nodejs/weibo/1.sublime-project",
+		"/E/学习/nodejs/weibo/node_modules/cookie-parser/node_modules/cookie/.npmignore",
+		"/E/学习/nodejs/weibo/node_modules/ejs/package.json",
+		"/E/学习/nodejs/EjsWebApp/app.js",
+		"/E/学习/nodejs/httpRequest.js",
+		"/E/学习/nodejs/test.js",
+		"/E/学习/nodejs/sampleEjs/routes/index.js",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.sublime-settings",
+		"/E/学习/nodejs/sampleEjs/routes/upload.js",
+		"/E/学习/nodejs/sampleEjs/views/upload.ejs",
+		"/E/学习/nodejs/sampleEjs/views/reg.ejs",
+		"/E/学习/nodejs/debug.js",
+		"/E/test/package.json",
+		"/E/学习/nodejs/sampleEjs/node_modules/body-parser/package.json",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.py",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.pyc",
+		"/E/学习/nodejs/sampleEjs/routes/reg.js",
+		"/E/学习/nodejs/sampleEjs/views/login.ejs",
+		"/E/学习/nodejs/sampleEjs/views/handler.ejs",
+		"/E/学习/nodejs/test/package.json",
+		"/E/学习/nodejs/sampleEjs/routes/login.js",
+		"/E/学习/nodejs/sampleEjs/routes/logout.js",
+		"/E/学习/nodejs/sampleEjs/models/user.js",
+		"/C/Windows/System32/drivers/etc/HOSTS",
+		"/E/专题/案例/area.htm",
+		"/D/Program Files/nodejs/hello.js",
+		"/E/学习/nodejs/sampleEjs/views/subform.ejs",
+		"/E/学习/nodejs/sampleEjsPre/app.js",
+		"/E/学习/nodejs/sampleEjsPre/routes/subform.js",
+		"/E/学习/nodejs/sampleEjsPre/views/subform.ejs",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Emmet/Emmet.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
+		"/E/学习/nodejs/sampleEjsPre/package.json",
+		"/E/学习/nodejs/sampleEjsPre/public/stylesheets/navbar-static-top.css",
+		"/E/学习/nodejs/sampleEjsPre/public/stylesheets/signin.css",
+		"/E/学习/nodejs/sampleEjsPre/public/javascripts/jquery-1.11.1.min.js",
+		"/E/学习/nodejs/mysql/Pooling.js",
+		"/E/学习/nodejs/mysql/reconnection.js",
+		"/E/学习/nodejs/mysql/intro.js",
+		"/E/学习/nodejs/Nodejs学习笔记/events.js",
+		"/E/学习/nodejs/sampleEjsPre/routes/usesession.js",
+		"/E/学习/nodejs/sampleEjsPre/views/usesession.ejs",
+		"/E/学习/nodejs/sampleEjsPre/routes/usecookies.js",
+		"/E/学习/nodejs/sampleEjsPre/views/usecookies.ejs",
+		"/E/学习/nodejs/t.txt",
+		"/C/Program Files/mysql-5.5.25/my.ini",
+		"/E/专题/文档/专题客户接口/克莱斯勒/savedata.ashx",
+		"/E/专题/文档/专题客户接口/福特/savedata.ashx",
+		"/C/Program Files/mysql-5.5.25-winx64/my.ini",
+		"/E/学习/nodejs/sampleEjsPre/views/usecookie.ejs",
+		"/E/学习/nodejs/sampleEjsPre/views/nav.ejs",
+		"/E/学习/nodejs/sampleEjsPre/views/usecrypto.ejs",
+		"/E/学习/nodejs/sampleEjsPre/views/index.ejs",
+		"/E/学习/nodejs/sampleEjsPre/routes/usecrypto.js",
+		"/E/学习/nodejs/sampleEjsPre/routes/index.js",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Tag/Tag Package.sublime-settings",
+		"/E/学习/nodejs/EjsWebApp/routes/index.js",
+		"/E/学习/nodejs/EjsWebApp/views/index.ejs",
+		"/E/学习/nodejs/EjsWebApp/package.json",
+		"/E/学习/nodejs/Nodejs学习笔记/modules.js",
+		"/E/学习/nodejs/Nodejs学习笔记/modulesLoad.js",
+		"/E/学习/nodejs/Nodejs学习笔记/modulesDiffExports.js",
+		"/E/学习/nodejs/webApp/app.js",
+		"/E/学习/nodejs/webApp/routes/index.js",
+		"/E/学习/nodejs/webApp/routes/users.js",
+		"/E/学习/nodejs/webApp/views/index.jade"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"collection",
+			"ensureIndex",
+			"createHash",
+			"redirest",
+			"title",
+			"connect-flash",
+			"success",
+			"mongodb",
+			"configure",
+			"title",
+			"app.use(partials()); ",
+			"render",
+			"express-partials",
+			"partials",
+			"reg",
+			"listen",
+			"app.router",
+			"senchalabs",
+			"registry",
+			"D:\\MongoDB",
+			"</div>",
+			"<%></%>",
+			"__dirname",
+			"engine",
+			"configure",
+			".all",
+			"	\n",
+			"stringify",
+			"main:",
+			"logout",
+			"cookie",
+			"maxAge",
+			"locals.userName",
+			"value=\"123\"",
+			"User.getUserByUserName(userName, function(err, result) {\n		if (result == '') {\n			res.locas.error = '用户不存在';\n			res.render('login', {\n				title: TITLE\n			});\n			return;\n		}\n	});",
+			"getUserByUserName",
+			"txtUserName",
+			"btnSub",
+			"value=\"reg\"",
+			"></",
+			"')));\n",
+			"bodyParser ",
+			" req.body['txtUserName'],",
+			"if",
+			"code",
+			"链接",
+			"mysqld",
+			"mysqlid",
+			"base",
+			"locals.islogin",
+			"app.use(session({ secret: 'wilson'}));",
+			"req.session.islogin",
+			"crypto",
+			"method",
+			"});\n",
+			"使用usecrypto示例",
+			"env",
+			"counterObj = new counter();\n// counterObj.printNextCount();",
+			"ion() {\n// 	counter += 10;\n// 	this.printNextCount = function() {\n// 		console.log(counter);\n// 	}\n// }",
+			"require",
+			"var",
+			"EventEmitter",
+			"require",
+			",",
+			"D:\\Program Files\\nodejs\\",
+			"{\n",
+			"		\n",
+			"	\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+			"C:\\Program Files\\MongoDB 2.6 Standard",
+			"",
+			"连接",
+			",",
+			"D:\\\\Program Files (x86)\\nodejs\\",
+			"D:\\\\Program Files (x86)\\nodejs"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/E/学习/nodejs/学习笔记.txt",
+					"settings":
+					{
+						"buffer_size": 3012,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								932,
+								925
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 427.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 2093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								503,
+								490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 319.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "routes/index.js",
+					"settings":
+					{
+						"buffer_size": 3268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								323
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/user.ejs",
+					"settings":
+					{
+						"buffer_size": 65,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/say.ejs",
+					"settings":
+					{
+						"buffer_size": 254,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								254,
+								254
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/post.js",
+					"settings":
+					{
+						"buffer_size": 1448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								784,
+								784
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 130.0
+	},
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"layout",
+				"microblog/views/layout.ejs"
+			],
+			[
+				"form.js",
+				"sampleEjs/routes/subform.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"pre",
+				"/E/学习/nodejs/weibo/1.sublime-project"
+			],
+			[
+				"",
+				"/E/学习/nodejs/weibo/1.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true
+}
