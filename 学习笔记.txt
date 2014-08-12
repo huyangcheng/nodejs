@@ -1,3 +1,8 @@
+适用场景
+	
+不使用场景
+	作为计算服务器，进行大量的计算
+
 1. http对象
 	1.1 创建http
 	var http = require("http");
@@ -101,7 +106,7 @@ Nodejs尝试加载的优先级 js文件 > json文件 > node文件
 11.全局变量
 	1.process：
 12.mongodb 模块
-	
+	1.打开
 附：
 	模块
 		supervisor：使用supervisor 命令执行HTTP 服务器会在改变任何nodejs代码的时候自动重启
