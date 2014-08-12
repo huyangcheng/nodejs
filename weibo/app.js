@@ -15,6 +15,7 @@ var settings = require('./settings');
 
 var app = express();
 
+
 var flash = require('connect-flash');
 app.use(flash());
 
@@ -52,9 +53,9 @@ app.use(function(req, res, next){
 app.use('/', routes);
 app.use('/users', users);
 
-app.listen(6339, function() {
-    console.log('HTTP 服务器启动');
-});
+// app.listen(6339, function() {
+//     console.log('HTTP 服务器启动');
+// });
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
