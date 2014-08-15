@@ -68,53 +68,76 @@
 	"buffers":
 	[
 		{
-			"contents": "1. http对象\n	1.1 创建http\n	var http = require(\"http\");\n	1.2 创建Server\n	用户请求服务时会将信息（request,response）传递到回调函数中\n	http.createServer(function(request, response){})\n		1.2.1 listen方法，设置服务器监听的端口号\n	1.3 创建request,作为客户端向HTTP 服务器发起请求\n		1.options参数：\n			1.host：请求网站的域名或 IP 地址。\n			2.port：请求网站的端口，默认 80。\n			3.method：请求方法，默认是 GET。\n			4.path：请求的相对于根的路径，默认是“/”。QueryString 应该包含在其中。\n			5.headers ：一个关联数组对象，为请求头的内容。\n		2.callback回调函数：传递一个为 http.ClientResponse 的实例。\n\n2. response对象\n	2.1 writeHead方法，设置返回的状态码以及头信息。 //response.writeHead(200, {\"Content-Type\":\"text/plain\"});\n	2.2 write方法,想客户端返回文本。\n	2.3 end方法，返回结束\n	2.3 参数获取\n		1.query：接收GET提交参数\n		2.body：接收POST提交参数\n		3.params：两种都能接收\n	2.4 redirect方法，服务器内部跳转\n3. exports对象\n	3.1 为对象赋值属性，可在其他js文件中调用刚该属性\n\n4.模块\n文件模块访问方式通过require('/文件名.后缀')    require('./文件名.后缀')    requrie('../文件名.后缀') \n去访问，文件后缀可以省略；以\"/\"开头是以绝对路径去加载，以\"./\"开头和以\"../\"开头表示以相对路径加载，而以\"./\"开头表示同级目录下文件，\nNodejs尝试加载的优先级 js文件 > json文件 > node文件\n\n5.ejs模版引擎\n	1.include命令：将指定文件中的内容包括进来\n	2.express-partials 模块，ejs 不支持layout 模块后需要使用外部模块来实现\n		1.实现：\n			var partials = require('express-partials');\n			app.use(partials());\n		2.链接：https://github.com/publicclass/express-partials\n\n6.crypto加密模块\n	//根据指定算法生成hash值\n	var md5 = crypto.createHash('MD5');\n	//加密\n	var en_pwd = md5.update('源文件').digest('hex');\n7.session模块\n	1.注册：session\n	2.清除：\n		req.session.destroy();\n8.cookies\n	1.设置\n		request.cookie(name, value, {options: value});\n	2.获取\n		request.cookies[name];\n	3.清除\n		request.clearCookie(name);\n	4.options\n		1.maxAge：设置过期时间，毫秒为单位\n9.MySql 模块\n	https://github.com/felixge/node-mysql\n	https://www.npmjs.org/package/mysql\n	1.创建连接: mysql.createConnection(options);\n	2.Connection Options：\n		host：主机地址 （默认：localhost）\n		user：用户名\n		password：密码\n		port：端口号 （默认：3306）\n		database：数据库名\n		charset：连接字符集（默认：'UTF8_GENERAL_CI'，注意字符集的字母都要大写）\n		localAddress：此IP用于TCP连接（可选）\n		socketPath：连接到unix域路径，当使用 host 和 port 时会被忽略\n		timezone：时区（默认：'local'）\n		connectTimeout：连接超时（默认：不限制；单位：毫秒）\n		multipleStatements：是否许一个query中有多个MySQL语句 （默认：false）\n		...\n	3.打开连接： connection.connect(func); //操作完成后执行回调函数，并传回错误信息对。\n	4.执行SQL ： connection.query(sql, params, func);\n	5.结束连接： connection.end(),connection.destory(); //end在queries都结束后执行，接收一个回调函数；destory立即执行。\n	6.创建连接池： mysql.createPool(options);\n	7.Pool options： 在connection的前提下扩充\n		waitForConnections：当连接池没有连接或超出最大限制时，设置为true且会把连接放入队列，设置为false会返回error\n		connectionLimit：连接数限制，默认：10\n		queueLimit：最大连接请求队列限制，设置为0表示不限制，默认：0\n	8.连接事件： pool.on('connection', func(connection));\n	9.共享连接池使用： pool.getConnection(func(err, connection));\n	10.释放： connection.release();\n	11.断线重连： connection.connect 方法中判断err参数，并监听on事件。\n	12.escape ：防止SQL注入，将用户输入参数值传入即可。\n\n10.formidable 模块\n	https://github.com/felixge/node-formidable\n	https://www.npmjs.org/package/formidable\n	1.创建上传表单对象：formidable.IncomingForm();\n	2.对象属性：\n		1.encoding：设置字符编码[utf-8]\n		2.uploadDir：设置上传文件的默认目录\n		3.keepExtensions： 是否保留文件后缀\n		4.maxFieldsSize： 设置文件最大值\n		5.更多..\n11.全局变量\n	1.process：\n12.mongodb 模块\n	1.打开\n附：\n	模块\n		supervisor：使用supervisor 命令执行HTTP 服务器会在改变任何nodejs代码的时候自动重启\n		node-inspector：适用于在浏览器中调试node.js文件\n",
-			"file": "/E/学习/nodejs/学习笔记.txt",
-			"file_size": 4848,
-			"file_write_time": 130521980177035493,
+			"file": "/E/学习/bootstrap/学习笔记.txt",
 			"settings":
 			{
-				"buffer_size": 3012,
+				"buffer_size": 1271,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app.js",
+			"file": "/E/学习/bootstrap/helper.html",
 			"settings":
 			{
-				"buffer_size": 2093,
+				"buffer_size": 549,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/学习/bootstrap/template.html",
+			"settings":
+			{
+				"buffer_size": 1042,
+				"line_ending": "Windows",
+				"name": "template"
+			}
+		},
+		{
+			"file": "/E/学习/bootstrap/button.html",
+			"settings":
+			{
+				"buffer_size": 1714,
+				"line_ending": "Windows",
+				"name": "buton"
+			}
+		},
+		{
+			"file": "/E/学习/bootstrap/test.html",
+			"settings":
+			{
+				"buffer_size": 2066,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/学习/bootstrap/table.html",
+			"settings":
+			{
+				"buffer_size": 1493,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/学习/bootstrap/css/bootstrap.css",
+			"settings":
+			{
+				"buffer_size": 132546,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "routes/index.js",
+			"file": "/E/学习/bootstrap/basicform.htm",
 			"settings":
 			{
-				"buffer_size": 3268,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/user.ejs",
-			"settings":
-			{
-				"buffer_size": 65,
+				"buffer_size": 1762,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "views/say.ejs",
+			"file": "/E/学习/bootstrap/horizontalfrom.html",
 			"settings":
 			{
-				"buffer_size": 254,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "models/post.js",
-			"settings":
-			{
-				"buffer_size": 1448,
+				"buffer_size": 1125,
 				"line_ending": "Windows"
 			}
 		}
@@ -175,14 +198,30 @@
 	},
 	"file_history":
 	[
+		"/E/学习/bootstrap/js/jquery.min.js",
+		"/E/学习/bootstrap/basicform.htm;",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/E/学习/nodejs/weibo/views/layout.ejs",
+		"/E/学习/nodejs/weibo/app.js",
+		"/E/学习/nodejs/WebSockets/index.html",
+		"/E/学习/nodejs/学习笔记.txt",
+		"/E/学习/bootstrap/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.svg",
+		"/E/学习/bootstrap/bootstrap-3.2.0-dist/css/bootstrap.css.map",
+		"/E/学习/bootstrap/bootstrap-3.2.0-dist/css/bootstrap.css",
+		"/E/专题/后台模版/发票后台/admin/list.aspx",
+		"/E/学习/nodejs/WebSockets/app.js",
+		"/E/学习/nodejs/weibo/cluster.js",
+		"/C/Users/Administrator/Desktop/microblog/app.js",
+		"/E/学习/nodejs/weibo/routes/index.js",
+		"/E/学习/nodejs/weibo/views/user.ejs",
+		"/E/学习/nodejs/weibo/views/say.ejs",
+		"/E/学习/nodejs/weibo/models/post.js",
 		"/E/学习/nodejs/weibo/models/user.js",
 		"/E/学习/nodejs/weibo/views/login.ejs",
 		"/E/学习/nodejs/weibo/views/posts.ejs",
-		"/E/学习/nodejs/weibo/views/layout.ejs",
 		"/E/学习/nodejs/weibo/views/index.ejs",
 		"/C/Users/Administrator/Desktop/microblog/models/post.js",
 		"/C/Users/Administrator/Desktop/microblog/views/layout.ejs",
-		"/E/学习/nodejs/weibo/models/post.js",
 		"/C/Users/Administrator/Desktop/microblog/views/user.ejs",
 		"/C/Users/Administrator/Desktop/microblog/routes/index.js",
 		"/E/学习/nodejs/weibo/views/reg.ejs",
@@ -190,15 +229,11 @@
 		"/C/Users/Administrator/Desktop/microblog/models/user.js",
 		"/E/学习/nodejs/weibo/package.json",
 		"/C/Users/Administrator/Desktop/microblog/node_modules/connect-flash/package.json",
-		"/C/Users/Administrator/Desktop/microblog/app.js",
 		"/C/Users/Administrator/Desktop/microblog/package.json",
 		"/E/学习/nodejs/weibo/models/db.js",
-		"/E/学习/nodejs/weibo/app.js",
-		"/E/学习/nodejs/weibo/routes/index.js",
 		"/E/学习/nodejs/weibo/views/foot.ejs",
 		"/C/Users/Administrator/Desktop/microblog/routes/users.js",
 		"/C/Users/Administrator/Desktop/microblog/views/index.ejs",
-		"/E/学习/nodejs/学习笔记.txt",
 		"/E/学习/nodejs/weibo/views/nav.ejs",
 		"/E/学习/nodejs/weibo/views/head.ejs",
 		"/C/Users/Administrator/Desktop/microblog/views/login.ejs",
@@ -227,7 +262,6 @@
 		"/E/学习/nodejs/sampleEjs/views/index.ejs",
 		"/E/学习/nodejs/weibo/public/img/glyphicons-halflings-white.png",
 		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Side Bar.sublime-settings",
-		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/SideBarEnhancements/Side Bar.sublime-settings",
 		"/E/学习/nodejs/sampleEjs/routes/subform.js",
 		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
@@ -291,18 +325,7 @@
 		"/E/学习/nodejs/sampleEjsPre/views/usecrypto.ejs",
 		"/E/学习/nodejs/sampleEjsPre/views/index.ejs",
 		"/E/学习/nodejs/sampleEjsPre/routes/usecrypto.js",
-		"/E/学习/nodejs/sampleEjsPre/routes/index.js",
-		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Tag/Tag Package.sublime-settings",
-		"/E/学习/nodejs/EjsWebApp/routes/index.js",
-		"/E/学习/nodejs/EjsWebApp/views/index.ejs",
-		"/E/学习/nodejs/EjsWebApp/package.json",
-		"/E/学习/nodejs/Nodejs学习笔记/modules.js",
-		"/E/学习/nodejs/Nodejs学习笔记/modulesLoad.js",
-		"/E/学习/nodejs/Nodejs学习笔记/modulesDiffExports.js",
-		"/E/学习/nodejs/webApp/app.js",
-		"/E/学习/nodejs/webApp/routes/index.js",
-		"/E/学习/nodejs/webApp/routes/users.js",
-		"/E/学习/nodejs/webApp/views/index.jade"
+		"/E/学习/nodejs/sampleEjsPre/routes/index.js"
 	],
 	"find":
 	{
@@ -320,6 +343,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			" ：",
+			"：",
+			" ",
+			"></",
+			"table",
+			"body {",
+			"access",
 			"collection",
 			"ensureIndex",
 			"createHash",
@@ -391,10 +421,14 @@
 		],
 		"highlight": true,
 		"in_selection": false,
-		"preserve_case": true,
+		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"：",
+			"",
+			" ：",
+			"			\n",
 			"C:\\Program Files\\MongoDB 2.6 Standard",
 			"",
 			"连接",
@@ -411,83 +445,81 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/E/学习/nodejs/学习笔记.txt",
+					"file": "/E/学习/bootstrap/学习笔记.txt",
 					"settings":
 					{
-						"buffer_size": 3012,
+						"buffer_size": 1271,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								932,
-								925
+								1229,
+								1229
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 427.0,
+						"translation.y": 540.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app.js",
+					"file": "/E/学习/bootstrap/helper.html",
 					"settings":
 					{
-						"buffer_size": 2093,
+						"buffer_size": 549,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								503,
-								490
+								505,
+								505
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 319.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "routes/index.js",
+					"file": "/E/学习/bootstrap/template.html",
 					"settings":
 					{
-						"buffer_size": 3268,
+						"buffer_size": 1042,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								323,
-								323
+								0,
+								1042
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"auto_name": "template",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -498,79 +530,165 @@
 				},
 				{
 					"buffer": 3,
-					"file": "views/user.ejs",
+					"file": "/E/学习/bootstrap/button.html",
 					"settings":
 					{
-						"buffer_size": 65,
+						"buffer_size": 1714,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								65,
-								65
+								1292,
+								1523
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"auto_name": "buton",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 240.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "views/say.ejs",
+					"file": "/E/学习/bootstrap/test.html",
 					"settings":
 					{
-						"buffer_size": 254,
+						"buffer_size": 2066,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								254,
-								254
+								1540,
+								1540
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 59.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "models/post.js",
+					"file": "/E/学习/bootstrap/table.html",
 					"settings":
 					{
-						"buffer_size": 1448,
+						"buffer_size": 1493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								784,
-								784
+								838,
+								895
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 240.0,
+						"translation.y": 279.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/E/学习/bootstrap/css/bootstrap.css",
+					"settings":
+					{
+						"buffer_size": 132546,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33510,
+								33515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 40895.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/E/学习/bootstrap/basicform.htm",
+					"settings":
+					{
+						"buffer_size": 1762,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1391,
+								1391
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/E/学习/bootstrap/horizontalfrom.html",
+					"settings":
+					{
+						"buffer_size": 1125,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
