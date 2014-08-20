@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"sty",
+				"STYLE	Tag"
+			],
+			[
+				"scr",
+				"SCRIPT	Tag"
+			],
+			[
 				"padd",
 				"padding-bottom"
 			],
@@ -71,73 +79,31 @@
 			"file": "/E/学习/bootstrap/学习笔记.txt",
 			"settings":
 			{
-				"buffer_size": 1271,
+				"buffer_size": 3674,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/学习/bootstrap/helper.html",
+			"file": "/E/学习/bootstrap/case/thumbnail.html",
 			"settings":
 			{
-				"buffer_size": 549,
+				"buffer_size": 3044,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/学习/bootstrap/template.html",
+			"file": "/E/学习/bootstrap/case/alert.html",
 			"settings":
 			{
-				"buffer_size": 1042,
-				"line_ending": "Windows",
-				"name": "template"
-			}
-		},
-		{
-			"file": "/E/学习/bootstrap/button.html",
-			"settings":
-			{
-				"buffer_size": 1714,
-				"line_ending": "Windows",
-				"name": "buton"
-			}
-		},
-		{
-			"file": "/E/学习/bootstrap/test.html",
-			"settings":
-			{
-				"buffer_size": 2066,
+				"buffer_size": 265,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/E/学习/bootstrap/table.html",
+			"file": "/E/学习/bootstrap/case/page-header.html",
 			"settings":
 			{
-				"buffer_size": 1493,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/学习/bootstrap/css/bootstrap.css",
-			"settings":
-			{
-				"buffer_size": 132546,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/学习/bootstrap/basicform.htm",
-			"settings":
-			{
-				"buffer_size": 1762,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/E/学习/bootstrap/horizontalfrom.html",
-			"settings":
-			{
-				"buffer_size": 1125,
+				"buffer_size": 402,
 				"line_ending": "Windows"
 			}
 		}
@@ -198,11 +164,34 @@
 	},
 	"file_history":
 	[
+		"/E/学习/bootstrap/case/jumbotron.html",
+		"/E/学习/bootstrap/case/badges.html",
+		"/E/学习/bootstrap/case/pagination.html",
+		"/E/学习/bootstrap/case/labels.html",
+		"/E/学习/bootstrap/case/crumbs.html",
+		"/E/学习/bootstrap/case/navbar.html",
+		"/E/学习/bootstrap/template.html",
+		"/E/学习/bootstrap/button.html",
+		"/E/学习/bootstrap/test.html",
+		"/E/学习/bootstrap/table.html",
+		"/E/学习/bootstrap/css/bootstrap.css",
+		"/E/学习/bootstrap/basicform.htm",
+		"/E/学习/bootstrap/horizontalfrom.html",
+		"/E/学习/nodejs/weibo/app.js",
+		"/E/学习/bootstrap/case/paging.html",
+		"/E/学习/bootstrap/case/nav.html",
+		"/E/学习/bootstrap/case/input-groups.html",
+		"/E/学习/bootstrap/学习笔记.txt",
+		"/E/学习/bootstrap/buttonDrodown.html",
+		"/E/学习/bootstrap/buttonGroup.html",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Tag/Tag Package.sublime-settings",
+		"/E/学习/bootstrap/dropdown.html",
+		"/E/学习/bootstrap/helper.html",
+		"/E/公司/项目/Topic/SourceCode2014/WebSites/Web.Topic.Site/2014/8/bmwi8/js/main.js",
 		"/E/学习/bootstrap/js/jquery.min.js",
 		"/E/学习/bootstrap/basicform.htm;",
 		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/E/学习/nodejs/weibo/views/layout.ejs",
-		"/E/学习/nodejs/weibo/app.js",
 		"/E/学习/nodejs/WebSockets/index.html",
 		"/E/学习/nodejs/学习笔记.txt",
 		"/E/学习/bootstrap/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.svg",
@@ -302,30 +291,7 @@
 		"/E/学习/nodejs/sampleEjsPre/routes/subform.js",
 		"/E/学习/nodejs/sampleEjsPre/views/subform.ejs",
 		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Emmet/Emmet.sublime-settings",
-		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings",
-		"/E/学习/nodejs/sampleEjsPre/package.json",
-		"/E/学习/nodejs/sampleEjsPre/public/stylesheets/navbar-static-top.css",
-		"/E/学习/nodejs/sampleEjsPre/public/stylesheets/signin.css",
-		"/E/学习/nodejs/sampleEjsPre/public/javascripts/jquery-1.11.1.min.js",
-		"/E/学习/nodejs/mysql/Pooling.js",
-		"/E/学习/nodejs/mysql/reconnection.js",
-		"/E/学习/nodejs/mysql/intro.js",
-		"/E/学习/nodejs/Nodejs学习笔记/events.js",
-		"/E/学习/nodejs/sampleEjsPre/routes/usesession.js",
-		"/E/学习/nodejs/sampleEjsPre/views/usesession.ejs",
-		"/E/学习/nodejs/sampleEjsPre/routes/usecookies.js",
-		"/E/学习/nodejs/sampleEjsPre/views/usecookies.ejs",
-		"/E/学习/nodejs/t.txt",
-		"/C/Program Files/mysql-5.5.25/my.ini",
-		"/E/专题/文档/专题客户接口/克莱斯勒/savedata.ashx",
-		"/E/专题/文档/专题客户接口/福特/savedata.ashx",
-		"/C/Program Files/mysql-5.5.25-winx64/my.ini",
-		"/E/学习/nodejs/sampleEjsPre/views/usecookie.ejs",
-		"/E/学习/nodejs/sampleEjsPre/views/nav.ejs",
-		"/E/学习/nodejs/sampleEjsPre/views/usecrypto.ejs",
-		"/E/学习/nodejs/sampleEjsPre/views/index.ejs",
-		"/E/学习/nodejs/sampleEjsPre/routes/usecrypto.js",
-		"/E/学习/nodejs/sampleEjsPre/routes/index.js"
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Emmet.sublime-settings"
 	],
 	"find":
 	{
@@ -343,6 +309,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"<img src=\"/wp-content/uploads/2014/06/kittens.jpg\" ",
+			"src=\"/wp-content/",
+			"/wp-content",
+			"warning",
+			"navbar ",
+			"navbar-toggle",
+			"lu",
 			" ：",
 			"：",
 			" ",
@@ -420,11 +393,15 @@
 			"	\n"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"<img src=\"http://www.w3cschool.cc/wp-content/uploads/2014/06/kittens.jpg\" ",
+			"src=\"http://www.w3cschool.cc/wp-content",
+			"http://www.w3cschool.cc/wp-content",
+			"li",
 			"：",
 			"",
 			" ：",
@@ -445,7 +422,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -453,41 +430,68 @@
 					"file": "/E/学习/bootstrap/学习笔记.txt",
 					"settings":
 					{
-						"buffer_size": 1271,
+						"buffer_size": 3674,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1229,
-								1229
+								3674,
+								3674
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 1980.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/E/学习/bootstrap/helper.html",
+					"file": "/E/学习/bootstrap/case/thumbnail.html",
 					"settings":
 					{
-						"buffer_size": 549,
+						"buffer_size": 3044,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								505,
-								505
+								1096,
+								1096
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 579.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/E/学习/bootstrap/case/alert.html",
+					"settings":
+					{
+						"buffer_size": 265,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								248,
+								248
 							]
 						],
 						"settings":
@@ -501,11 +505,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/E/学习/bootstrap/template.html",
+					"buffer": 3,
+					"file": "/E/学习/bootstrap/case/page-header.html",
 					"settings":
 					{
-						"buffer_size": 1042,
+						"buffer_size": 402,
 						"regions":
 						{
 						},
@@ -513,179 +517,12 @@
 						[
 							[
 								0,
-								1042
+								402
 							]
 						],
 						"settings":
 						{
-							"auto_name": "template",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/E/学习/bootstrap/button.html",
-					"settings":
-					{
-						"buffer_size": 1714,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1292,
-								1523
-							]
-						],
-						"settings":
-						{
-							"auto_name": "buton",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 240.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/E/学习/bootstrap/test.html",
-					"settings":
-					{
-						"buffer_size": 2066,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1540,
-								1540
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 59.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/E/学习/bootstrap/table.html",
-					"settings":
-					{
-						"buffer_size": 1493,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								838,
-								895
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 279.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/E/学习/bootstrap/css/bootstrap.css",
-					"settings":
-					{
-						"buffer_size": 132546,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								33510,
-								33515
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 40895.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/E/学习/bootstrap/basicform.htm",
-					"settings":
-					{
-						"buffer_size": 1762,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1391,
-								1391
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/E/学习/bootstrap/horizontalfrom.html",
-					"settings":
-					{
-						"buffer_size": 1125,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								111,
-								111
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 3,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
